@@ -1,0 +1,9 @@
+# Group IDs for hardware acceleration access
+# Run `getent group video | cut -d: -f3` to find your VIDEO_GID
+VIDEO_GID=
+
+# Run `getent group render | cut -d: -f3` to find your RENDER_GID
+RENDER_GID=
+
+# Path to your local ComfyUI models directory
+MODELS_PATH=
