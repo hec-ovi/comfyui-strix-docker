@@ -4,3 +4,4 @@ cache/
 __pycache__/
 .env
 .DS_Store
+user/
