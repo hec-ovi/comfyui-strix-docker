@@ -16,7 +16,7 @@ Standard Docker images (Debian/Ubuntu 22.04) fail on Strix Halo for three reason
 **Solution:** use **Ubuntu Rolling** (for driver support) but force **UV** to build an isolated **Python 3.12** environment inside the container. This gives us the best of both worlds: modern drivers + stable Python.
 
 ## 🛠️ Prerequisites
-* **Host OS:** Ubuntu 25.04 / 25.10 (Or any kernel > 6.12 I guess)
+* **Host OS:** Ubuntu 25.04+ (Kernel 6.12 or newer recommended)
 * **Hardware:** AMD Ryzen AI Max 3xx (Strix Halo / RDNA 3.5)
 * **Docker & Compose** installed.
 
@@ -24,9 +24,8 @@ Standard Docker images (Debian/Ubuntu 22.04) fail on Strix Halo for three reason
 
 ### 1. Clone & Setup
 ```bash
-git clone [https://github.com/hector-oviedo/comfyui-strix-halo.git](https://github.com/YOUR_USERNAME/comfyui-strix-halo.git)
+git clone https://github.com/hector-oviedo/comfyui-strix-halo.git
 cd comfyui-strix-halo
-
 ```
 
 ### 2. Configure Permissions (Crucial!)
@@ -37,16 +36,20 @@ You must tell Docker your specific GPU group IDs.
 # Find your IDs
 getent group video | cut -d: -f3
 getent group render | cut -d: -f3
-
 ```
 
-Create a `.env` file and paste your numbers:
+Create a `.env` file from the template and paste your numbers:
 
+```bash
+cp .envTemplate .env
+```
+
+Edit the `.env` file:
 ```ini
 # .env
 VIDEO_GID=77    # <--- Replace with YOUR 'video' number
 RENDER_GID=666  # <--- Replace with YOUR 'render' number
-
+MODELS_PATH=/path/to/your/models # <--- Path to your models
 ```
 
 ### 3. Launch
