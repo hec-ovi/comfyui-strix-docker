@@ -1,0 +1,29 @@
+services:
+  comfyui:
+    build: .
+    image: comfyui-strix-halo:latest
+    container_name: strix-beast
+    privileged: true
+    restart: unless-stopped
+    # CRITICAL: Pass GPU Hardware
+    devices:
+      - "/dev/kfd:/dev/kfd"
+      - "/dev/dri:/dev/dri"
+    group_add:
+      - "${VIDEO_GID}"
+      - "${RENDER_GID}"
+    ports:
+      - "8188:8188"
+    volumes:
+      # Map your local workspace folders here
+      - ${MODELS_PATH}:/app/ComfyUI/models
+      - ./output:/app/ComfyUI/output
+      - ./user:/app/ComfyUI/user
+      - ./cache:/root/.cache
+    environment:
+      # Optional: Tunable for performance
+      - HSA_OVERRIDE_GFX_VERSION=11.5.1
+      - HIP_VISIBLE_DEVICES=0
+    ipc: host
+    security_opt:
+      - seccomp:unconfined

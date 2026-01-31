@@ -1,0 +1,9 @@
+{
+    "Comfy.Queue.History.Expanded": true,
+    "Comfy.VueNodes.Enabled": false,
+    "Comfy.VueNodes.AutoScaleLayout": false,
+    "Comfy.Minimap.Visible": false,
+    "Comfy.Templates.SelectedModels": [
+        "Wan2.2"
+    ]
+}
