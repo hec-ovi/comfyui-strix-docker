@@ -24,7 +24,7 @@ Standard Docker images (Debian/Ubuntu 22.04) fail on Strix Halo for three reason
 
 ### 1. Clone & Setup
 ```bash
-git clone https://github.com/hector-oviedo/comfyui-strix-halo.git
+git clone https://github.com/hec-ovi/comfyui-strix-halo.git
 cd comfyui-strix-halo
 ```
 
